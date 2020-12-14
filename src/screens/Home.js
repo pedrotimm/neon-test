@@ -2,12 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-import { TouchableOpacity, TextInput, Text, FlatList, Image, View } from 'react-native';
+import { TouchableOpacity, TextInput, Text, FlatList, Image, View, Alert } from 'react-native';
 import styles from './../Styles';
 
 class HomeScreen extends Component {
     constructor(){
         super();
+
+        //captura o token para as transações de envio de dinheiro
+        fetch('http://processoseletivoneon.azurewebsites.net/GenerateToken?nome=Pedro Timm da Silveira&email=pedrotimm@hotmail.com')
+            .then( (token) => {
+                global.token = token._bodyInit._data.blobId;
+            });
     }
     render(){
         const navigation = this.props.navigation;

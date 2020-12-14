@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-import { TouchableOpacity, Text, FlatList, Image, View } from 'react-native';
+import { TouchableOpacity, Text, FlatList, Image, View, Alert } from 'react-native';
 import styles from './../Styles';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -11,7 +11,8 @@ class ContactsScreen extends Component {
       super();
       this.state = {
         showDialog: false,
-        pressedContact: null
+        pressedContact: null,
+        value: 'R$ 0,00'
       }  
     }
     render() {
@@ -119,6 +120,30 @@ class ContactsScreen extends Component {
             </View>
           </TouchableOpacity>
         );
+
+        const sendMoney = () => {
+          if(!this.state.value || parseFloat(this.state.value.replace('R$ ', '').trim()) <= 0){
+            return null;
+          }
+          fetch(' http://processoseletivoneon.azurewebsites.net/SendMoney', {
+            method: 'POST',
+            body: JSON.stringify({
+              ClienteId: this.state.pressedContact.id,
+              token: global.token,
+              valor: this.state.value.replace('R$ ', '').replace(',', '.')
+            })
+          }).then( (response) => {
+            if(response) {
+              this.setState({ showMessage: true, message: 'Sucesso!' });
+            } else {
+              this.setState({ showMessage: true, message: 'Falha!' });
+            }
+          }).catch((error) => {
+            Alert.alert('Falha',
+              JSON.stringify(error)
+            );
+          })
+        };
       
         return (
           <LinearGradient colors={['rgb(40, 44, 56)', 'rgb(23, 79, 126)']} style={styles.container} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
@@ -126,18 +151,19 @@ class ContactsScreen extends Component {
               <FlatList data={contacts} renderItem={renderContact}/>
             </View>
             { this.state.showDialog ? <View style={styles.dialog}>
+                { this.state.showMessage ? <Text>{this.state.message}</Text> : null}
                 <View style={styles.column}>
-                  <View style={styles.row}>
+                  <View style={styles.contactDetailsRow}>
                     <TouchableOpacity onPress={ () => this.setState({ showDialog: false, pressedContact: null })}><Text style={styles.close}>X</Text></TouchableOpacity>
-                    <Image style={styles.contactImg} source={this.state.pressedContact.imageFile}/> 
+                    <Image style={styles.pressedContactImg} source={this.state.pressedContact.imageFile}/> 
                   </View>
                   <Text style={styles.pressedContactName}>{this.state.pressedContact.name}</Text>
-                  <Text style={styles.pressedContactNumber}>(51){this.state.pressedContact.phoneNumber}</Text>
-                  <Text>Valor a enviar:</Text>
-                  <TextInput value="R$ 0,00"></TextInput>
-                  <TouchableOpacity>
-                    <View style={styles.sendButton}>
-                      <Text style={styles.sendButtonText}>ENVIAR</Text>
+                  <Text style={styles.whiteText}>(51){this.state.pressedContact.phoneNumber}</Text>
+                  <Text style={{ color: 'white', marginBottom: 15, marginTop: 15 }}>Valor a enviar:</Text>
+                  <TextInput value={this.state.value} onChangeText={(value) => this.setState({ value: value })} style={styles.inputValue}></TextInput>
+                  <TouchableOpacity onPress={sendMoney}>
+                    <View style={styles.button}>
+                      <Text style={styles.buttonText}>ENVIAR</Text>
                     </View>
                   </TouchableOpacity>
                 </View>

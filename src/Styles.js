@@ -19,6 +19,26 @@ export default StyleSheet.create({
         borderBottomWidth: 0.5,
         borderBottomColor: 'rgb(31,70,91)',
     },
+    contactDetailsRow: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        width: 330,
+        flexDirection: 'row'
+    },
+    close: {
+        flex: 1,
+        width: 112,
+        position: 'relative',
+        top: 5,
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: 'rgb(204,204,204)',
+        alignSelf: 'flex-start',
+    },
+    whiteText: {
+        color: 'white'
+    },
     contactColumn: {
       flex: 1,
       height: 100,
@@ -46,6 +66,43 @@ export default StyleSheet.create({
     buttonText: {
       color: '#fff',
       fontSize: 16,
+    },
+    inputValue: {
+        fontSize: 28,
+        flex: 1,
+        width: 250,
+        maxHeight: 67,
+        marginBottom: 15,
+        borderRadius: 8,
+        textAlign: 'center',
+        backgroundColor: '#fff',
+        padding: 2,
+        color: 'rgb(0, 166, 168)'
+    },
+    dialog: {
+        position: 'absolute',
+        flex: 1,
+        top: 250,
+        height: 360,
+        left: 25,
+        right: 25,
+        padding: 12,
+        paddingTop: 2,
+        backgroundColor: 'rgb(57,88,106)',
+        borderRadius: 30
+    },
+    pressedContactImg: {
+      width: 80,
+      height: 80,
+      borderRadius: 38,
+      borderColor: 'rgb(0, 166, 204)',
+      borderWidth: 2,
+      marginLeft: 15,
+    },
+    pressedContactName: {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: 16
     },
     profileImg: {
       width: 150,
