@@ -10,10 +10,15 @@ class HomeScreen extends Component {
         super();
 
         //captura o token para as transações de envio de dinheiro
-        fetch('http://processoseletivoneon.azurewebsites.net/GenerateToken?nome=Pedro Timm da Silveira&email=pedrotimm@hotmail.com')
-            .then( (token) => {
-                global.token = token._bodyInit._data.blobId;
-            });
+        fetch('http://processoseletivoneon.azurewebsites.net/GenerateToken?nome=Pedro Timm da Silveira&email=pedrotimm@hotmail.com', {
+          headers: {
+            'Content-Type': 'text/plain',
+            'mode': 'cors'
+          }
+        })
+          .then( (response) => {
+            global.token = response._bodyInit._data.blobId;
+          });
     }
     render(){
         const navigation = this.props.navigation;

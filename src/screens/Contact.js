@@ -108,6 +108,8 @@ class ContactsScreen extends Component {
             id: '14'
           },
         ];
+
+        global.contacts = contacts;
         
         const renderContact = ({ item }) => (
           <TouchableOpacity onPress={() => this.setState({ showDialog: true, pressedContact: item })}>
@@ -121,27 +123,27 @@ class ContactsScreen extends Component {
           </TouchableOpacity>
         );
 
-        const sendMoney = () => {
+        const sendMoney = async () => {
           if(!this.state.value || parseFloat(this.state.value.replace('R$ ', '').trim()) <= 0){
             return null;
           }
-          fetch(' http://processoseletivoneon.azurewebsites.net/SendMoney', {
+
+          const data = [];
+          data.push(encodeURIComponent('ClienteId') + '=' + encodeURIComponent(this.state.pressedContact.id));
+          data.push(encodeURIComponent('token') + '=' + encodeURIComponent(global.token));
+          data.push(encodeURIComponent('valor') + '=' + encodeURIComponent(this.state.value.replace('R$ ', '').replace(',', '.')));
+
+          fetch('http://processoseletivoneon.azurewebsites.net/SendMoney', {
             method: 'POST',
-            body: JSON.stringify({
-              ClienteId: this.state.pressedContact.id,
-              token: global.token,
-              valor: this.state.value.replace('R$ ', '').replace(',', '.')
-            })
+            body: data.join('&')
           }).then( (response) => {
             if(response) {
               this.setState({ showMessage: true, message: 'Sucesso!' });
             } else {
               this.setState({ showMessage: true, message: 'Falha!' });
             }
-          }).catch((error) => {
-            Alert.alert('Falha',
-              JSON.stringify(error)
-            );
+          }).catch( (error) => {
+            Alert.alert('erro', JSON.stringify(error));
           })
         };
       
