@@ -11,8 +11,7 @@ class HistoryScreen extends Component {
       super();
       this.state = {
         showDialog: false,
-        transactions: null,
-        sums: []
+        transactions: null
       }
     }
     
@@ -23,24 +22,7 @@ class HistoryScreen extends Component {
             response = null;
 
             if(response) {
-              const sums = [];
               this.state.transactions = response.json();
-              if (this.state.transactions.length) {
-                  for(const c in contacts) {
-                    for(const t in this.state.transactions) {
-                      if (t.ClienteId === c.id) {
-                        if (!sums[c.id]) {
-                          sums[c.id] = {
-                            id: c.id,
-                            value: 0
-                          };
-                        }
-                        sums[c.id].value += t.Valor;
-                      }
-                    }
-                  }
-                }
-                this.state.sums = sums;
             }
           });
       };
@@ -49,12 +31,6 @@ class HistoryScreen extends Component {
           this.state.transactions = [];
           getTransfers();
         }
-
-        const renderSum = ({ item }) => {
-            <View style={styles.graphicItem}>
-                <Text>{item.Valor}</Text>
-            </View>
-        };
 
         const renderTransaction = ({ item }) => {
           let contact = null,
@@ -81,9 +57,6 @@ class HistoryScreen extends Component {
 
         return (
           <LinearGradient colors={['#001f33', '#006bb3']} style={styles.container} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
-            <View style={styles.row}>
-              <FlatList data={this.state.sums} renderItem={renderSum} keyExtractor={(item) => item.Id.toString()}/>
-            </View>
             <View style={styles.column}>
               <FlatList data={this.state.transactions} renderItem={renderTransaction} keyExtractor={(item) => item.Id.toString()}/>
             </View>
