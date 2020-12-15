@@ -17,7 +17,7 @@ class HomeScreen extends Component {
             }
           })
           .then( (response) => {
-            global.token = response._bodyInit._data.blobId;
+            global.token = response.text();
           });
     }
     render(){
