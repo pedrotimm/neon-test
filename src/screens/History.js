@@ -4,9 +4,8 @@ import 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity, Text, FlatList, Image, View, Alert } from 'react-native';
 import styles from './../Styles';
-import { TextInput } from 'react-native-gesture-handler';
 
-class ContactsScreen extends Component {
+class HistoryScreen extends Component {
     constructor(){
       super();
     }
@@ -23,7 +22,7 @@ class ContactsScreen extends Component {
 
         const renderSum = ({ item }) => {
             <View style={styles.graphicItem}>
-                
+                <Text>{item.Valor}</Text>
             </View>
         };
 
@@ -38,4 +37,4 @@ class ContactsScreen extends Component {
     }
 };
 
-export default ContactsScreen;
+export default HistoryScreen;

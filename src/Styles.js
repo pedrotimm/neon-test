@@ -8,36 +8,36 @@ export default StyleSheet.create({
       justifyContent: 'center',
     },
     row: {
-        flex: 0,
-        width: 350,
-        marginLeft: 25,
-        marginRight: 50,
-        height: 105,
-        alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'rgb(31,70,91)',
+      flex: 0,
+      width: 350,
+      marginLeft: 25,
+      marginRight: 50,
+      height: 105,
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      borderBottomWidth: 0.5,
+      borderBottomColor: 'rgb(31,70,91)',
     },
     contactDetailsRow: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        width: 330,
-        flexDirection: 'row'
+      flex: 1,
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      width: 330,
+      flexDirection: 'row'
     },
     close: {
-        flex: 1,
-        width: 112,
-        position: 'relative',
-        top: 5,
-        fontSize: 25,
-        fontWeight: 'bold',
-        color: 'rgb(204,204,204)',
-        alignSelf: 'flex-start',
+      flex: 1,
+      width: 112,
+      position: 'relative',
+      top: 5,
+      fontSize: 25,
+      fontWeight: 'bold',
+      color: 'rgb(204,204,204)',
+      alignSelf: 'flex-start',
     },
     whiteText: {
-        color: 'white'
+      color: 'white'
     },
     contactColumn: {
       flex: 1,
@@ -68,28 +68,28 @@ export default StyleSheet.create({
       fontSize: 16,
     },
     inputValue: {
-        fontSize: 28,
-        flex: 1,
-        width: 250,
-        maxHeight: 67,
-        marginBottom: 15,
-        borderRadius: 8,
-        textAlign: 'center',
-        backgroundColor: '#fff',
-        padding: 2,
-        color: 'rgb(0, 166, 168)'
+      fontSize: 28,
+      flex: 1,
+      width: 250,
+      maxHeight: 67,
+      marginBottom: 15,
+      borderRadius: 8,
+      textAlign: 'center',
+      backgroundColor: '#fff',
+      padding: 2,
+      color: 'rgb(0, 166, 168)'
     },
     dialog: {
-        position: 'absolute',
-        flex: 1,
-        top: 250,
-        height: 360,
-        left: 25,
-        right: 25,
-        padding: 12,
-        paddingTop: 2,
-        backgroundColor: 'rgb(57,88,106)',
-        borderRadius: 30
+      position: 'absolute',
+      flex: 1,
+      top: 250,
+      height: 360,
+      left: 25,
+      right: 25,
+      padding: 12,
+      paddingTop: 2,
+      backgroundColor: 'rgb(57,88,106)',
+      borderRadius: 30
     },
     pressedContactImg: {
       width: 80,
@@ -120,13 +120,13 @@ export default StyleSheet.create({
       marginLeft: 15
     },
     contactName: {
-        fontSize: 16,
-        color: 'rgb(0, 166, 168)',
-        fontWeight: '500'
+      fontSize: 16,
+      color: 'rgb(0, 166, 168)',
+      fontWeight: '500'
     },
     phoneNumber: {
-        fontSize: 15,
-        color: 'rgb(25, 115, 122)'
+      fontSize: 15,
+      color: 'rgb(25, 115, 122)'
     },
     name: {
       color: '#fff',
