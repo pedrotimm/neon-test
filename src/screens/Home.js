@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-import { TouchableOpacity, TextInput, Text, FlatList, Image, View, Alert } from 'react-native';
+import { TouchableOpacity, TextInput, Text, FlatList, Image, View } from 'react-native';
 import styles from './../Styles';
 
 class HomeScreen extends Component {
@@ -11,11 +11,11 @@ class HomeScreen extends Component {
 
         //captura o token para as transações de envio de dinheiro
         fetch('http://processoseletivoneon.azurewebsites.net/GenerateToken?nome=Pedro Timm da Silveira&email=pedrotimm@hotmail.com', {
-          headers: {
-            'Content-Type': 'text/plain',
-            'mode': 'cors'
-          }
-        })
+            headers: {
+              'Content-Type': 'text/plain',
+              'mode': 'cors'
+            }
+          })
           .then( (response) => {
             global.token = response._bodyInit._data.blobId;
           });
@@ -25,26 +25,24 @@ class HomeScreen extends Component {
         const buttons = [
           {
             title: 'ENVIAR DINHEIRO',
-            targetPage: 'ENVIAR DINHEIRO',
             key: '0'
           },
           {
             title: 'HISTÓRICO DE ENVIOS',
-            targetPage: 'History',
             key: '1'
           }
         ];
         
         const renderButton = ({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate(item.targetPage) }>
-            <View style={styles.button}>
+          <TouchableOpacity onPress={() => navigation.navigate(item.title) }>
+            <View style={[styles.button, { backgroundColor: '#0088cc' }]}>
               <Text style={styles.buttonText}>{item.title}</Text>
             </View>
           </TouchableOpacity>
         );
       
         return (
-          <LinearGradient colors={['rgb(40, 44, 56)', 'rgb(23, 79, 126)']} style={styles.container} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
+          <LinearGradient colors={['#001f33', '#006bb3']} style={styles.container} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
               <View style={styles.column}>
                 <View style={styles.column}>
                   <Image style={styles.profileImg} source={ require('./../images/perfil.jpg') }/>
@@ -56,7 +54,7 @@ class HomeScreen extends Component {
                 </View>
               </View>
               <StatusBar style="auto" />
-            </LinearGradient>
+          </LinearGradient>
         );
     }
 };

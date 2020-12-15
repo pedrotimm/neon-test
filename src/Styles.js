@@ -33,7 +33,7 @@ export default StyleSheet.create({
       top: 5,
       fontSize: 25,
       fontWeight: 'bold',
-      color: 'rgb(204,204,204)',
+      color: '#0088cc',
       alignSelf: 'flex-start',
     },
     whiteText: {
@@ -60,12 +60,41 @@ export default StyleSheet.create({
       width: 250,
       maxHeight: 50,
       marginBottom: 15,
-      backgroundColor: 'rgb(0, 166, 168)',
+      backgroundColor: '#1a8cff',
       borderRadius: 25
     },
     buttonText: {
       color: '#fff',
       fontSize: 16,
+    },
+    banner: { 
+      width: 250, 
+      backgroundColor: '#f00',
+      color: '#fff',
+      zIndex: 5000, 
+      height: 40, 
+      flex: 0,
+      top: -50, 
+      left: 50, 
+      right: 15,
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      textAlign: 'center',
+      shadowRadius: 6.68,
+      shadowColor: '#000',
+      shadowOpacity: 0.9,
+      shadowOffset: {
+        width: 0,
+        height: 5
+      },
+      elevation: 11
+    },
+    failed: {
+      backgroundColor: '#f00'
+    },
+    success: {
+      backgroundColor: 'rgb(0, 166, 204)'
     },
     inputValue: {
       fontSize: 28,
@@ -77,7 +106,7 @@ export default StyleSheet.create({
       textAlign: 'center',
       backgroundColor: '#fff',
       padding: 2,
-      color: 'rgb(0, 166, 168)'
+      color: '#001a33'
     },
     dialog: {
       position: 'absolute',
@@ -88,19 +117,19 @@ export default StyleSheet.create({
       right: 25,
       padding: 12,
       paddingTop: 2,
-      backgroundColor: 'rgb(57,88,106)',
+      backgroundColor: '#33d6ff',
       borderRadius: 30
     },
     pressedContactImg: {
       width: 80,
       height: 80,
       borderRadius: 38,
-      borderColor: 'rgb(0, 166, 204)',
+      borderColor: '#b3daff',
       borderWidth: 2,
       marginLeft: 15,
     },
     pressedContactName: {
-      color: '#fff',
+      color: '#0088cc',
       fontWeight: 'bold',
       fontSize: 16
     },
@@ -108,25 +137,25 @@ export default StyleSheet.create({
       width: 150,
       height: 150,
       borderRadius: 80,
-      borderColor: 'rgb(9, 209, 171)',
+      borderColor: '#00a3cc',
       borderWidth: 4
     },
     contactImg: {
       width: 50,
       height: 50,
       borderRadius: 25,
-      borderColor: 'rgb(0, 166, 204)',
+      borderColor: '#00e6e6',
       borderWidth: 2,
       marginLeft: 15
     },
     contactName: {
       fontSize: 16,
-      color: 'rgb(0, 166, 168)',
+      color: '#b3e7ff',
       fontWeight: '500'
     },
     phoneNumber: {
       fontSize: 15,
-      color: 'rgb(25, 115, 122)'
+      color: '#e0ebeb'
     },
     name: {
       color: '#fff',
@@ -135,6 +164,8 @@ export default StyleSheet.create({
     },
     subtitle: {
       color: '#fff',
-      fontSize: 14
+      fontSize: 14,
+      position: 'relative',
+      top: -15
     }
 });
